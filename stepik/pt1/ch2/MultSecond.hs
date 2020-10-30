@@ -25,7 +25,5 @@ GHCi> multSecond ('A',2) ('E',7)
 import Data.Function
 
 multSecond = g `on` h
-
 g = (*)
-
 h = snd
