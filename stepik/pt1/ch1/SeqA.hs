@@ -1,3 +1,5 @@
+module SeqA where
+
 {-
 Реализуйте функцию seqA, находящую элементы следующей рекуррентной последовательности
 
@@ -12,4 +14,13 @@ GHCi> seqA 301
 1276538859311178639666612897162414
 
 -}
+
+seqA :: Integer -> Integer
+seqA n | n == 0 = 1
+       | n == 1 = 2
+       | n == 2 = 3
+       | n > 2 = let helper a b c d | d == 2 = c 
+                          | otherwise = helper b c (c + b - (2*a)) (d-1) 
+                          in helper 1 2 3 n
+       | otherwise = error "error"
 
