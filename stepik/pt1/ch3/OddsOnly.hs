@@ -6,7 +6,7 @@ GHCi> oddsOnly [2,5,7,10,11,12]
 -}
 
 
-module OddsOnly where
+module OddsOnly (oddsOnly) where
 
 oddsOnly :: Integral a => [a] -> [a]
 oddsOnly [] = []
