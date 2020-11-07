@@ -15,3 +15,14 @@ sum3 (x:xs) (y:ys) [] = (x + y) : sum3 xs ys []
 sum3 (x:xs) [] (z:zs) = (x + z) : sum3 xs [] zs
 sum3 [] (y:ys) (z:zs) = (y + z) : sum3 [] ys zs
 sum3 (x:xs) (y:ys) (z:zs) = (x + y + z) : sum3 xs ys zs
+
+
+{-
+sum3 :: Num a => [a] -> [a] -> [a] -> [a]
+sum3 xs ys zs = xs `sum2` ys `sum2` zs
+  where
+    sum2 [] bs = bs
+    sum2 as [] = as
+    sum2 (a : as) (b : bs) = (a + b) : sum2 as bs
+
+-}
