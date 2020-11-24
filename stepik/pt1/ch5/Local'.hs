@@ -10,24 +10,5 @@ instance Monad (Reader r) where
   m >>= k  = Reader $ \r -> runReader (k (runReader m r)) r
 -}
 
-
-
-
-import System.Directory
-import Data.List
-import Control.Monad (liftM)
-
-
---main' :: IO ()
-main' = do 
-    putStr "Substring: "
-    substr <- getLine
-    if substr == "" then putStrLn "Canceled"
-    else  do
-        files <- liftM (filter (isInfixOf substr)) $ getDirectoryContents $ "."
-        z <- mapM_ rmFiles files
-        return z
-
-rmFiles path = do
-    putStrLn $ "Removing file: " ++ path
-    removeFile path
+local' :: (r -> r') -> Reader r' a -> Reader r a
+local' f m = Reader $ (runReader m) . f
